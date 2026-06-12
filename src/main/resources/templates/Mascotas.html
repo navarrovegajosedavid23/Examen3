@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mascotas</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                    <i class="fas fa-search"></i>
+                </a>
+                <div class="navbar-search-block">
+                    <form class="form-inline">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <a href="#" class="brand-link">
+            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        </a>
+
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">Alexander Pierce</a>
+                </div>
+            </div>
+
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Mantenimientos
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/mascotas" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mascotas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/razas" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Razas</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Mascotas</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Mascotas</li>
+                        </ol>
+                    </div>
+                </div>
+            </div></section>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Lista Mascotas</h3>&nbsp;
+                                <div class="d-flex justify-content-end">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-lg">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Edad</th>
+                                        <th>Observaciones</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="modal-lg">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Agregar mascota</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre:</label>
+                                                    <input type="text" class="form-control" id="nombre"
+                                                           placeholder="Ingrese nombre de mascota">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edad">Edad:</label>
+                                                    <input type="number" class="form-control" id="edad" placeholder="Ingrese edad">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="observaciones">Observaciones:</label>
+                                                    <input type="text" class="form-control" id="observaciones" placeholder="Ingrese observaciones">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="raza">Raza:</label>
+                                                    <select class="custom-select form-control-border" id="raza">
+                                                        <option value="">Seleccione una raza...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-success" onclick="guardar();">Guardar mascota</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modal-update">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Actualizar mascota</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <input type="hidden" id="id-update">
+
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="nombre-update">Nombre:</label>
+                                                    <input type="text" class="form-control" id="nombre-update"
+                                                           placeholder="Ingrese nombre de mascota">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edad-update">Edad:</label>
+                                                    <input type="number" class="form-control" id="edad-update" placeholder="Ingrese edad">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="observaciones-update">Observaciones:</label>
+                                                    <input type="text" class="form-control" id="observaciones-update" placeholder="Ingrese observaciones">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="raza-update">Raza:</label>
+                                                    <select class="custom-select form-control-border" id="raza-update">
+                                                        <option value="">Seleccione una raza...</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar mascota</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal fade" id="modal-delete">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Eliminar mascota</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <input type="hidden" id="id-eliminar">
+
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="nombre-delete">Nombre:</label>
+                                                    <input type="text" class="form-control" id="nombre-delete" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edad-delete">Edad:</label>
+                                                    <input type="number" class="form-control" id="edad-delete" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="observaciones-delete">Observaciones:</label>
+                                                    <input type="text" class="form-control" id="observaciones-delete" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <p class="text-danger mt-3"><b>¿Estás seguro de que deseas eliminar este registro? Esta acción no se puede deshacer.</b></p>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-danger" onclick="eliminar();" data-dismiss="modal">Eliminar mascota</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer class="main-footer">
+        <div class="float-right d-none d-sm-block">
+            <b>Version</b> 3.2.0
+        </div>
+        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    </footer>
+
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+</div>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script src="/dist/js/jspropios/crud-mascotas-ajax.js"></script>
+
+<script>
+    $(function () {
+        // Inicializar DataTables
+        var table = $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        });
+        table.buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        // Llamar a nuestras funciones para llenar la tabla y los selects
+        listar();
+        cargarRazas();
+    });
+</script>
+</body>
+
+</html>
